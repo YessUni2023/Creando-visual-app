@@ -1,0 +1,44 @@
+android {
+    defaultConfig {
+        ...
+        resConfigs "en", "es", "fr", "al"
+    }
+}
+
+
+
+<?xml version="prueba" encoding="utf-8"?>
+<locale-config xmlns:android="http://schemas.android.com/apk/res/android">
+   <locale android:name="en-US"/>
+   <locale android:name="en-GB"/>
+   <locale android:name="fr"/>
+   <locale android:name="al"/>
+<locale android:name="es"/>
+   <locale android:name="zh-Hans-MO"/>
+   <locale android:name="zh-Hant-MO"/>
+</locale-config>
+
+<manifest>
+    ...
+    <application
+        ...
+        android:localeConfig="@xml/locales_config">
+    </application>
+</manifest>
+
+android {
+  ...
+  defaultConfig {
+    resourceConfigurations += ["es", "en", "fr", "al", "b+zh+Hans+MO", "b+zh+Hant+MO"]
+  }
+}
+
+LocaleListCompat appLocale = LocaleListCompat.forLanguageTags("xx-YY");
+// Call this on the main thread as it may require Activity.restart()
+AppCompatDelegate.setApplicationLocales(appLocale);
+
+<locale-config xmlns:android="http://schemas.android.com/apk/res/android">
+   <locale android:name="en-GB"/> <!-- English (United Kingdom) -->
+   <locale android:name="es"/> <!-- Spanish (Spain) -->
+   <locale android:name="fr"/> <!-- French (France) -->
+   <locale android:name="de"/> <!-- German -->
